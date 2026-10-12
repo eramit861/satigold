@@ -1,0 +1,116 @@
+.sg-footer {
+    background: var(--sg-green-deep);
+    color: rgba(251, 245, 230, 0.8);
+    font-family: var(--sg-font-ui);
+    font-size: 0.92rem;
+}
+
+.sg-footer__grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    align-items: start;
+    gap: 48px;
+    padding-top: 72px;
+    padding-bottom: 56px;
+}
+
+.sg-footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sg-footer__brand img {
+    width: 96px;
+    flex-shrink: 0;
+}
+
+.sg-footer__name {
+    margin: 0 0 4px;
+    font-family: var(--sg-font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sg-cream);
+}
+
+.sg-footer__tagline {
+    margin: 0;
+    font-family: var(--sg-font-body);
+    font-style: italic;
+    color: var(--sg-gold-light);
+}
+
+.sg-footer__hindi {
+    margin: 6px 0 0;
+    color: rgba(251, 245, 230, 0.75);
+}
+
+.sg-footer__heading {
+    margin: 0 0 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sg-gold-light);
+}
+
+.sg-footer__links {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sg-footer__links a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.sg-footer__links a:hover {
+    color: var(--sg-gold-light);
+}
+
+.sg-footer__bottom {
+    border-top: 1px solid rgba(220, 169, 72, 0.2);
+}
+
+.sg-footer__bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 0.82rem;
+}
+
+.sg-footer__bottom-inner p {
+    margin: 0;
+}
+
+.sg-footer__slogan {
+    font-family: var(--sg-font-body);
+    font-style: italic;
+    color: var(--sg-gold-light);
+}
+
+@media (max-width: 900px) {
+    .sg-footer__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .sg-footer__brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 560px) {
+    .sg-footer__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-top: 56px;
+        padding-bottom: 96px;
+    }
+}

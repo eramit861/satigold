@@ -1,0 +1,104 @@
+.sg-order {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(220, 169, 72, 0.16), transparent 40%),
+        radial-gradient(circle at 95% 100%, rgba(220, 169, 72, 0.12), transparent 40%),
+        var(--sg-green);
+}
+
+.sg-order__steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+}
+
+.sg-order__steps::before {
+    content: "";
+    position: absolute;
+    top: 52px;
+    left: 16%;
+    right: 16%;
+    border-top: 2px dashed rgba(220, 169, 72, 0.4);
+}
+
+.sg-order__step {
+    position: relative;
+    padding: 0 12px;
+    text-align: center;
+}
+
+.sg-order__number {
+    position: absolute;
+    top: -6px;
+    left: calc(50% + 28px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sg-gold-gradient);
+    font-family: var(--sg-font-ui);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sg-brown);
+}
+
+.sg-order__icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 104px;
+    height: 104px;
+    margin-bottom: 22px;
+    border: 2px solid rgba(220, 169, 72, 0.55);
+    border-radius: 50%;
+    background: var(--sg-green-deep);
+    color: var(--sg-gold-light);
+}
+
+.sg-order__title {
+    margin: 0 0 8px;
+    font-family: var(--sg-font-heading);
+    font-size: 1.25rem;
+    color: var(--sg-cream);
+}
+
+.sg-order__text {
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(251, 245, 230, 0.78);
+}
+
+.sg-order__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 56px;
+}
+
+@media (max-width: 800px) {
+    .sg-order__steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .sg-order__steps::before {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .sg-order__actions .sg-btn {
+        width: 100%;
+    }
+}

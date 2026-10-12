@@ -1,0 +1,230 @@
+.sg-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 64px;
+}
+
+.sg-product__media {
+    position: sticky;
+    top: calc(var(--sg-header-height) + 24px);
+}
+
+.sg-product__media img {
+    width: 100%;
+    border-radius: var(--sg-radius-lg);
+    box-shadow: var(--sg-shadow-lg);
+}
+
+.sg-product__content .sg-title {
+    margin-bottom: 6px;
+}
+
+.sg-product__subtitle {
+    margin: 0 0 24px;
+    font-style: italic;
+    color: var(--sg-gold-text);
+}
+
+.sg-product__features {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.sg-product__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--sg-text-muted);
+}
+
+.sg-product__check {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: var(--sg-gold-gradient);
+    color: var(--sg-brown);
+}
+
+/* ---------- Pack selector ---------- */
+
+.sg-packs {
+    margin: 0 0 22px;
+    padding: 0;
+    border: 0;
+}
+
+.sg-packs__legend {
+    margin-bottom: 12px;
+    padding: 0;
+    font-family: var(--sg-font-ui);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sg-green);
+}
+
+.sg-packs__options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.sg-pack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 14px;
+    border: 2px solid var(--sg-line);
+    border-radius: var(--sg-radius-sm);
+    background: var(--sg-cream);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sg-pack:hover {
+    border-color: var(--sg-gold-light);
+}
+
+.sg-pack.is-selected {
+    border-color: var(--sg-gold);
+    background: var(--sg-gold-pale);
+    box-shadow: 0 10px 22px -16px rgba(190, 138, 47, 1);
+}
+
+.sg-pack:has(input:focus-visible) {
+    outline: 3px solid var(--sg-gold-light);
+    outline-offset: 2px;
+}
+
+.sg-pack__size {
+    font-family: var(--sg-font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--sg-brown);
+}
+
+.sg-pack__note {
+    font-family: var(--sg-font-ui);
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--sg-text-muted);
+}
+
+.sg-product__price {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 24px;
+    font-family: var(--sg-font-ui);
+    font-size: 0.88rem;
+    color: var(--sg-text-muted);
+}
+
+.sg-product__price strong {
+    font-family: var(--sg-font-heading);
+    font-size: 1.35rem;
+    color: var(--sg-green);
+}
+
+.sg-product__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sg-product__actions .sg-btn {
+    flex: 1 1 auto;
+}
+
+/* ---------- Ways to enjoy ---------- */
+
+.sg-enjoy {
+    margin-top: 34px;
+    padding: 24px 26px;
+    border: 1px dashed var(--sg-gold-light);
+    border-radius: var(--sg-radius);
+    background: var(--sg-cream);
+}
+
+.sg-enjoy__title {
+    margin: 0 0 14px;
+    font-family: var(--sg-font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sg-gold-ink);
+}
+
+.sg-enjoy__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sg-enjoy__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--sg-brown);
+}
+
+.sg-enjoy__list .sg-icon {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--sg-gold);
+}
+
+@media (max-width: 960px) {
+    .sg-product {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .sg-product__media {
+        position: relative;
+        top: 0;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .sg-packs__options {
+        gap: 8px;
+    }
+
+    .sg-pack {
+        padding: 14px 8px;
+    }
+
+    .sg-pack__size {
+        font-size: 1.1rem;
+    }
+
+    .sg-product__actions .sg-btn {
+        width: 100%;
+    }
+
+    .sg-enjoy__list {
+        grid-template-columns: 1fr;
+    }
+}

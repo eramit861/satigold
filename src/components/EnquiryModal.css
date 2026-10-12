@@ -1,0 +1,313 @@
+.sg-modal {
+    width: min(640px, calc(100% - 24px));
+    max-width: none;
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 0;
+    border-radius: 24px;
+    background: var(--sg-white);
+    box-shadow: 0 40px 90px -30px rgba(26, 44, 24, 0.7);
+    color: var(--sg-brown);
+    overscroll-behavior: contain;
+}
+
+.sg-modal::backdrop {
+    background: rgba(26, 44, 24, 0.62);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.sg-modal[open] {
+    animation: sg-modal-in 0.25s ease-out;
+}
+
+.sg-modal[open]::backdrop {
+    animation: sg-backdrop-in 0.25s ease-out;
+}
+
+/* ---------- Header ---------- */
+
+.sg-modal__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 64px 24px 28px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(220, 169, 72, 0.25), transparent 50%),
+        var(--sg-green);
+    color: var(--sg-cream);
+}
+
+.sg-modal__emblem {
+    flex-shrink: 0;
+    width: 56px;
+}
+
+.sg-modal__title {
+    margin: 0 0 4px;
+    font-family: var(--sg-font-heading);
+    font-size: 1.4rem;
+    line-height: 1.25;
+    color: var(--sg-cream);
+}
+
+.sg-modal__subtitle {
+    margin: 0;
+    font-family: var(--sg-font-ui);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: rgba(251, 245, 230, 0.82);
+}
+
+.sg-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(251, 245, 230, 0.12);
+    color: var(--sg-cream);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.sg-modal__close:hover {
+    background: rgba(251, 245, 230, 0.24);
+}
+
+/* ---------- Form ---------- */
+
+.sg-modal__body {
+    padding: 26px 28px 24px;
+}
+
+.sg-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.sg-form__field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.sg-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.sg-form__label {
+    margin-bottom: 6px;
+    font-family: var(--sg-font-ui);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sg-green);
+}
+
+.sg-form__label span {
+    color: var(--sg-error);
+}
+
+.sg-form__control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--sg-line);
+    border-radius: 12px;
+    background: #FFFDF8;
+    font-family: var(--sg-font-ui);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--sg-brown);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sg-form__control::placeholder {
+    color: #A79275;
+}
+
+.sg-form__control:focus {
+    border-color: var(--sg-gold);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(220, 169, 72, 0.25);
+}
+
+.sg-form__control.is-invalid {
+    border-color: var(--sg-error);
+}
+
+.sg-form__control.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(178, 58, 42, 0.18);
+}
+
+select.sg-form__control {
+    padding-right: 40px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23BE8A2F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+textarea.sg-form__control {
+    min-height: 88px;
+    resize: vertical;
+}
+
+.sg-form__error {
+    margin-top: 6px;
+    font-family: var(--sg-font-ui);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--sg-error);
+}
+
+.sg-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.sg-form__alert {
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    border-left: 4px solid var(--sg-error);
+    border-radius: 0 10px 10px 0;
+    background: #FDECEA;
+    font-family: var(--sg-font-ui);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #8A2A1E;
+}
+
+.sg-form__alert a {
+    font-weight: 700;
+}
+
+.sg-form__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.sg-form__actions .sg-btn {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.sg-form__note {
+    margin: 14px 0 0;
+    font-family: var(--sg-font-ui);
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--sg-text-muted);
+}
+
+.sg-form__note a {
+    font-weight: 700;
+    color: var(--sg-green);
+}
+
+/* ---------- Success ---------- */
+
+.sg-modal__success {
+    padding: 44px 28px 36px;
+    text-align: center;
+}
+
+.sg-modal__success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: var(--sg-gold-pale);
+    color: var(--sg-whatsapp);
+}
+
+.sg-modal__success-title {
+    margin: 0 0 10px;
+    font-family: var(--sg-font-heading);
+    font-size: 1.4rem;
+    color: var(--sg-brown);
+}
+
+.sg-modal__success-text {
+    max-width: 420px;
+    margin: 0 auto 26px;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--sg-text-muted);
+}
+
+.sg-modal__success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+@keyframes sg-modal-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes sg-backdrop-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 560px) {
+    .sg-modal {
+        width: calc(100% - 16px);
+        max-height: calc(100dvh - 16px);
+        border-radius: 20px;
+    }
+
+    .sg-modal__header {
+        padding: 20px 56px 20px 20px;
+    }
+
+    .sg-modal__emblem {
+        width: 46px;
+    }
+
+    .sg-modal__title {
+        font-size: 1.2rem;
+    }
+
+    .sg-modal__body {
+        padding: 22px 20px 20px;
+    }
+
+    .sg-form__grid,
+    .sg-form__actions {
+        grid-template-columns: 1fr;
+    }
+}
