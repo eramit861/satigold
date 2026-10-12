@@ -40,6 +40,9 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'satigold-deploy-'))
 console.log(`→ Staging deploy in ${tmp}`)
 fs.cpSync(dist, tmp, { recursive: true })
 
+// Never publish SMTP secrets if a local config was copied into dist.
+fs.rmSync(path.join(tmp, 'contact-config.php'), { force: true })
+
 run('git', ['init', '-b', BRANCH], tmp)
 run('git', ['add', '-A'], tmp)
 run('git', ['-c', 'user.name=Sati Gold Deploy', '-c', 'user.email=deploy@satigold.in', 'commit', '-q', '-m', `Deploy ${new Date().toISOString()}`], tmp)

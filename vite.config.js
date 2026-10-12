@@ -108,6 +108,11 @@ ${canonicalHostRule}
   RewriteRule ^index\\.html$ / [L,R=301]
 </IfModule>
 
+# SMTP credentials used by contact.php
+<Files "contact-config.php">
+  Require all denied
+</Files>
+
 AddType application/manifest+json .webmanifest
 AddType image/webp .webp
 

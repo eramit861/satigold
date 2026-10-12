@@ -1,4 +1,4 @@
-import { FORM_SUBMIT_ENDPOINT, SITE } from '../config/site.js'
+import { ENQUIRY_ENDPOINT, SITE } from '../config/site.js'
 
 export const DEFAULT_WHATSAPP_MESSAGE = `Hi ${SITE.name}, I would like to know more about your pure honey and its prices.`
 
@@ -31,9 +31,9 @@ export function buildEnquiryText(form) {
     return `Hi ${SITE.name}, I would like to order ${SITE.productName}.\n\n${details}`
 }
 
-/** Sends the enquiry to SITE.contact.email through FormSubmit (no backend needed). */
+/** Sends the enquiry to SITE.contact.email through public/contact.php (Hostinger SMTP). */
 export async function sendEnquiryEmail(form) {
-    const response = await fetch(FORM_SUBMIT_ENDPOINT, {
+    const response = await fetch(ENQUIRY_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -44,15 +44,12 @@ export async function sendEnquiryEmail(form) {
             pack: form.pack,
             quantity: form.quantity,
             message: form.message,
-            _honey: form.website,
-            _subject: `New honey enquiry from ${form.name} (${form.pack})`,
-            _template: 'table',
-            _captcha: 'false',
+            website: form.website,
         }),
     })
 
     const result = await response.json().catch(() => ({}))
-    if (!response.ok || String(result.success) !== 'true') {
+    if (!response.ok || result.success !== true) {
         throw new Error(result.message || 'Unable to send the enquiry email.')
     }
     return result

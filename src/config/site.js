@@ -56,6 +56,7 @@ export const SITE = {
     },
 }
 
-export const FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${SITE.contact.email}`
+/** PHP endpoint on Hostinger (public/contact.php) that emails enquiries via SMTP. */
+export const ENQUIRY_ENDPOINT = '/contact.php'
 
 export const absoluteUrl = (pathname = '/') => new URL(pathname, SITE.url).href

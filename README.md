@@ -24,7 +24,8 @@ These values feed the page, meta/Open Graph tags, JSON-LD, `robots.txt`, `sitema
 
 Page copy (benefits, FAQs, pack sizes, gallery) lives in `src/data/content.js`.
 
-## Enquiry email (FormSubmit)
+## Enquiry email (Hostinger SMTP)
 
-"Send by Email" posts to [FormSubmit](https://formsubmit.co) – no backend needed.
-The first submission sends an activation email to `contact.email`; click the link once and later enquiries are delivered.
+"Send by Email" posts to `public/contact.php`, which sends through `smtp.hostinger.in` (465/SSL).
+One-time server setup: copy `contact-config.example.php` to `public_html/contact-config.php` (hPanel → File Manager) and set the mailbox password.
+That file is git-ignored, removed from deploys and blocked by `.htaccess`. The email button only works on the server (not in `npm run dev`).
