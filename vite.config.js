@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { SITE, absoluteUrl } from './src/config/site.js'
-import { FAQS } from './src/data/content.js'
+import { FAQS, PACK_OPTIONS } from './src/data/content.js'
 
 const escapeHtml = (value) =>
     String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -48,6 +48,23 @@ function buildStructuredData() {
                     contactType: 'sales',
                     availableLanguage: ['English', 'Hindi'],
                 },
+            },
+            {
+                '@type': 'Product',
+                '@id': absoluteUrl('/#product'),
+                name: SITE.productName,
+                description: SITE.description,
+                image: absoluteUrl(SITE.ogImage),
+                brand: { '@type': 'Brand', name: SITE.name },
+                offers: PACK_OPTIONS.map((pack) => ({
+                    '@type': 'Offer',
+                    name: `${SITE.productName} ${pack.size}`,
+                    price: pack.price,
+                    priceCurrency: 'INR',
+                    availability: 'https://schema.org/InStock',
+                    url: absoluteUrl('/#products'),
+                    seller: { '@id': organizationId },
+                })),
             },
             {
                 '@type': 'FAQPage',

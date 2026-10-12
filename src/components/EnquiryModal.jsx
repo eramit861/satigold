@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { SITE } from '../config/site.js'
 import { useEnquiry } from '../context/enquiryContext.js'
 import { BULK_PACK_OPTION, PACK_OPTIONS } from '../data/content.js'
+import { packLabel } from '../utils/price.js'
 import { buildEnquiryText, sendEnquiryEmail, telLink, whatsappLink } from '../utils/contact.js'
 import Icon from './Icon.jsx'
 import './EnquiryModal.css'
@@ -182,7 +183,7 @@ export default function EnquiryModal() {
                     <div>
                         <h2 id="sg-enquiry-title" className="sg-modal__title">Order &amp; Enquiry</h2>
                         <p id="sg-enquiry-subtitle" className="sg-modal__subtitle">
-                            Send your details on WhatsApp or email. We will reply with price &amp; delivery.
+                            Send your details on WhatsApp or email. We will confirm availability &amp; delivery.
                         </p>
                     </div>
                     <button type="button" className="sg-modal__close" aria-label="Close enquiry form" onClick={() => dialogRef.current?.close()}>
@@ -248,7 +249,7 @@ export default function EnquiryModal() {
                                     <option value="">Select a pack size</option>
                                     {PACK_OPTIONS.map((option) => (
                                         <option key={option.size} value={option.size}>
-                                            {option.size}
+                                            {packLabel(option.size)}
                                         </option>
                                     ))}
                                     <option value={BULK_PACK_OPTION}>{BULK_PACK_OPTION}</option>

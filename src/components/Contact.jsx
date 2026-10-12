@@ -50,8 +50,8 @@ export default function Contact() {
                     <img src="/images/emblem.webp" width="200" height="214" alt="" loading="lazy" decoding="async" className="sg-contact__emblem" />
                     <h3 className="sg-contact__card-title">Place your order</h3>
                     <p className="sg-contact__card-text">
-                        Fill a quick form and send it to us on WhatsApp or email. We will confirm the price, availability
-                        and delivery for your location.
+                        Fill a quick form and send it to us on WhatsApp or email. We will confirm availability and
+                        delivery for your location.
                     </p>
                     <div className="sg-contact__card-actions">
                         <button type="button" className="sg-btn sg-btn--primary sg-btn--lg sg-btn--block" onClick={() => openEnquiry()}>

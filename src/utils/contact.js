@@ -1,4 +1,5 @@
 import { ENQUIRY_ENDPOINT, SITE } from '../config/site.js'
+import { packLabel } from './price.js'
 
 export const DEFAULT_WHATSAPP_MESSAGE = `Hi ${SITE.name}, I would like to know more about your pure honey and its prices.`
 
@@ -11,7 +12,7 @@ export const whatsappLink = (message = DEFAULT_WHATSAPP_MESSAGE) =>
     `https://wa.me/${SITE.contact.whatsappNumber}?text=${encodeURIComponent(message)}`
 
 export const packEnquiryMessage = (pack) =>
-    `Hi ${SITE.name}, please share the price and availability of the ${pack} pack of ${SITE.productName}.`
+    `Hi ${SITE.name}, I would like to order the ${packLabel(pack)} pack of ${SITE.productName}. Please confirm availability and delivery charges.`
 
 const ENQUIRY_LINES = [
     ['Name', 'name'],
@@ -25,7 +26,7 @@ const ENQUIRY_LINES = [
 
 export function buildEnquiryText(form) {
     const details = ENQUIRY_LINES.filter(([, key]) => String(form[key] ?? '').trim() !== '')
-        .map(([label, key]) => `${label}: ${String(form[key]).trim()}`)
+        .map(([label, key]) => `${label}: ${key === 'pack' ? packLabel(form.pack) : String(form[key]).trim()}`)
         .join('\n')
 
     return `Hi ${SITE.name}, I would like to order ${SITE.productName}.\n\n${details}`

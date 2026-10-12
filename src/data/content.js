@@ -66,10 +66,11 @@ export const BENEFITS = [
     },
 ]
 
+/** `price` is in rupees (INR). */
 export const PACK_OPTIONS = [
-    { size: '250 g', note: 'Perfect to try' },
-    { size: '500 g', note: 'Everyday family pack' },
-    { size: '1 kg', note: 'Daily use & gifting' },
+    { size: '250 g', price: 399, note: 'Perfect to try' },
+    { size: '500 g', price: 799, note: 'Everyday family pack' },
+    { size: '1 kg', price: 1499, note: 'Daily use & gifting' },
 ]
 
 export const BULK_PACK_OPTION = 'Multiple packs / bulk order'
@@ -92,7 +93,7 @@ export const ORDER_STEPS = [
     {
         icon: 'jar',
         title: 'Choose your pack',
-        text: 'Pick 250 g, 500 g or 1 kg, or tell us how many jars you need.',
+        text: 'Pick 250 g (₹399), 500 g (₹799) or 1 kg (₹1,499), or tell us how many jars you need.',
     },
     {
         icon: 'send',
@@ -102,7 +103,7 @@ export const ORDER_STEPS = [
     {
         icon: 'truck',
         title: 'We confirm & deliver',
-        text: 'We reply with the price, availability and delivery details for your location.',
+        text: 'We confirm availability and delivery charges for your location.',
     },
 ]
 
@@ -152,7 +153,7 @@ export const FAQS = [
     },
     {
         question: 'Which pack sizes are available?',
-        answer: 'Sati Gold Pure Honey is available in 250 g, 500 g and 1 kg packs. Send us an enquiry on WhatsApp or email for current prices and bulk orders.',
+        answer: 'Sati Gold Pure Honey is available in 250 g (₹399), 500 g (₹799) and 1 kg (₹1,499) packs. Delivery charges depend on your city. For bulk orders, send us an enquiry on WhatsApp or email.',
     },
     {
         question: 'How do I place an order?',

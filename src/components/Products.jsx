@@ -3,12 +3,14 @@ import { SITE } from '../config/site.js'
 import { useEnquiry } from '../context/enquiryContext.js'
 import { PACK_OPTIONS, PRODUCT_FEATURES, WAYS_TO_ENJOY } from '../data/content.js'
 import { packEnquiryMessage, whatsappLink } from '../utils/contact.js'
+import { findPack, formatPrice } from '../utils/price.js'
 import Icon from './Icon.jsx'
 import './Products.css'
 
 export default function Products() {
     const { openEnquiry } = useEnquiry()
     const [selectedPack, setSelectedPack] = useState(PACK_OPTIONS[1].size)
+    const selectedPrice = findPack(selectedPack).price
 
     return (
         <section id="products" className="sg-section sg-section--white" aria-labelledby="sg-products-title">
@@ -57,6 +59,7 @@ export default function Products() {
                                                 className="sg-visually-hidden"
                                             />
                                             <span className="sg-pack__size">{pack.size}</span>
+                                            <span className="sg-pack__price">{formatPrice(pack.price)}</span>
                                             <span className="sg-pack__note">{pack.note}</span>
                                         </label>
                                     )
@@ -64,9 +67,11 @@ export default function Products() {
                             </div>
                         </fieldset>
 
-                        <p className="sg-product__price">
-                            <strong>Price on request</strong>
-                            Ask us for today&apos;s price and delivery charges to your city.
+                        <p className="sg-product__price" aria-live="polite">
+                            <strong>
+                                {formatPrice(selectedPrice)} <span className="sg-product__price-pack">/ {selectedPack}</span>
+                            </strong>
+                            Delivery charges depend on your city. We confirm them when you order.
                         </p>
 
                         <div className="sg-product__actions">
@@ -81,7 +86,7 @@ export default function Products() {
                                 rel="noopener noreferrer"
                             >
                                 <Icon name="whatsapp" size={20} />
-                                Ask Price on WhatsApp
+                                Order on WhatsApp
                             </a>
                         </div>
 
