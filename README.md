@@ -12,7 +12,10 @@ npm run preview   # serve dist/ locally
 npm run images -- /path/to/Sati_Gold_Brand_Assets   # regenerate optimized images
 ```
 
-Deploy by uploading the contents of `dist/`.
+## Deploy (Hostinger)
+
+`npm run deploy` builds the site and force-pushes `dist/` (including the generated `.htaccess`) to the `deploy` branch.
+In hPanel → Advanced → Git, track branch `deploy` into `public_html`, then click **Pull** (or enable Auto Deployment).
 
 ## Business details
 
