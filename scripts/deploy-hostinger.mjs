@@ -45,7 +45,7 @@ fs.rmSync(path.join(tmp, 'contact-config.php'), { force: true })
 
 run('git', ['init', '-b', BRANCH], tmp)
 run('git', ['add', '-A'], tmp)
-run('git', ['-c', 'user.name=Sati Gold Deploy', '-c', 'user.email=deploy@satigold.in', 'commit', '-q', '-m', `Deploy ${new Date().toISOString()}`], tmp)
+run('git', ['-c', 'user.name=Sati Gold Deploy', '-c', 'user.email=deploy@satigold.com', 'commit', '-q', '-m', `Deploy ${new Date().toISOString()}`], tmp)
 run('git', ['remote', 'add', 'origin', remote], tmp)
 
 console.log(`→ Force-pushing to ${remote} (${BRANCH})…`)

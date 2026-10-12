@@ -6,7 +6,7 @@
 export const SITE = {
     name: 'Sati Gold',
     productName: 'Sati Gold Pure Honey',
-    url: 'https://satigold.in',
+    url: 'https://satigold.com',
     locale: 'en_IN',
     language: 'en-IN',
     themeColor: '#243B21',
@@ -39,7 +39,7 @@ export const SITE = {
     },
 
     contact: {
-        email: 'orders@satigold.in',
+        email: 'orders@satigold.com',
         phoneDisplay: '+91 95362 21807',
         phoneE164: '+919536221807',
         whatsappNumber: '919536221807',
