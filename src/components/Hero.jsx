@@ -8,8 +8,8 @@ import './Hero.css'
 /* Keep in sync with the hero preload <link> in index.html. */
 const HERO_IMAGE = {
     src: '/images/hero-jar.webp',
-    srcSet: '/images/hero-jar-480.webp 480w, /images/hero-jar.webp 760w',
-    sizes: '(max-width: 900px) 88vw, 520px',
+    srcSet: '/images/hero-jar-480.webp 480w, /images/hero-jar-640.webp 640w, /images/hero-jar.webp 760w',
+    sizes: '(max-width: 900px) min(420px, 88vw), 520px',
 }
 
 export default function Hero() {
@@ -64,7 +64,6 @@ export default function Hero() {
                             width="760"
                             height="892"
                             alt="Sati Gold Pure Honey jar with honeycomb, wild flowers and the Himalayas of Uttarakhand"
-                            fetchPriority="high"
                         />
                     </div>
 

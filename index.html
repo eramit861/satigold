@@ -46,32 +46,23 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <!-- Hero image (LCP) - keep in sync with src/components/Hero.jsx -->
+        <!--
+            Hero image (LCP on desktop) - keep in sync with src/components/Hero.jsx.
+            Below 901px the image stacks under the fold and the hero text is the LCP,
+            so it is not preloaded there and does not compete with the fonts.
+        -->
         <link
             rel="preload"
             as="image"
+            media="(min-width: 901px)"
             type="image/webp"
             href="/images/hero-jar.webp"
-            imagesrcset="/images/hero-jar-480.webp 480w, /images/hero-jar.webp 760w"
-            imagesizes="(max-width: 900px) 88vw, 520px"
+            imagesrcset="/images/hero-jar-480.webp 480w, /images/hero-jar-640.webp 640w, /images/hero-jar.webp 760w"
+            imagesizes="(max-width: 900px) min(420px, 88vw), 520px"
             fetchpriority="high"
         />
 
-        <!-- Fonts (non-render-blocking) -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600&display=swap"
-            media="print"
-            onload="this.media='all'"
-        />
-        <noscript>
-            <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;600&display=swap"
-            />
-        </noscript>
+        <!-- Fonts are self-hosted (src/styles/fonts.css); the build inlines the CSS and preloads the hero fonts. -->
 
         <!-- Structured data (generated from src/config/site.js + src/data/content.js) -->
         <script type="application/ld+json">__STRUCTURED_DATA__</script>

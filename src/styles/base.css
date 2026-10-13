@@ -23,10 +23,10 @@
 
     --sg-gold-gradient: linear-gradient(135deg, #E7BC62 0%, #DCA948 35%, #BE8A2F 100%);
 
-    --sg-font-heading: "Libre Baskerville", Georgia, "Times New Roman", serif;
-    --sg-font-body: "Libre Baskerville", Georgia, "Times New Roman", serif;
-    --sg-font-ui: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --sg-font-hindi: "Noto Sans Devanagari", "Mangal", "Kohinoor Devanagari", sans-serif;
+    --sg-font-heading: "Libre Baskerville", "Libre Baskerville Fallback", "Libre Baskerville Fallback Android", Georgia, serif;
+    --sg-font-body: "Libre Baskerville", "Libre Baskerville Fallback", "Libre Baskerville Fallback Android", Georgia, serif;
+    --sg-font-ui: "Montserrat", "Montserrat Fallback", "Montserrat Fallback Android", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --sg-font-hindi: "Noto Sans Devanagari", "Kohinoor Devanagari", "Nirmala UI", "Mangal", sans-serif;
 
     --sg-radius-sm: 10px;
     --sg-radius: 18px;

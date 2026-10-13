@@ -19,14 +19,21 @@ const WEBP_OPTIONS = { quality: 80, effort: 6 }
 
 const src = (relativePath) => path.join(SOURCE_DIR, relativePath)
 
+/** The logo is a small header image, so it takes stronger compression without visible loss. */
+const LOGO_WEBP_OPTIONS = { quality: 68, alphaQuality: 80, effort: 6 }
+
+/* Smaller `-480` / `-160` variants feed the srcset of images that display below their full width on phones. */
 const WEBP_IMAGES = [
-    { input: '01_Logo/PNG/Sati_Gold_Logo_Primary_Transparent.png', output: 'logo.webp', width: 220, trim: true },
+    { input: '01_Logo/PNG/Sati_Gold_Logo_Primary_Transparent.png', output: 'logo.webp', width: 220, trim: true, options: LOGO_WEBP_OPTIONS },
+    { input: '01_Logo/PNG/Sati_Gold_Logo_Primary_Transparent.png', output: 'logo-160.webp', width: 160, trim: true, options: LOGO_WEBP_OPTIONS },
     { input: '01_Logo/PNG/Sati_Gold_Emblem_Transparent.png', output: 'emblem.webp', width: 200 },
     { input: '02_Jar_Labels/Jar_Front_Label_Without_Contact.png', output: 'jar-label.webp', width: 720 },
+    { input: '02_Jar_Labels/Jar_Front_Label_Without_Contact.png', output: 'jar-label-480.webp', width: 480 },
     { input: '02_Jar_Labels/Jar_Lid_Sticker_Round_Transparent.png', output: 'lid-sticker.webp', width: 640 },
     { input: '02_Jar_Labels/Jar_Wraparound_Label.png', output: 'wraparound-label.webp', width: 1000 },
     { input: '03_Poster/Sati_Gold_Poster.png', output: 'poster.webp', width: 768 },
     { input: '04_Social_Media/Instagram_Facebook_Post_1080x1080.png', output: 'himalayas-to-home.webp', width: 760 },
+    { input: '04_Social_Media/Instagram_Facebook_Post_1080x1080.png', output: 'himalayas-to-home-480.webp', width: 480 },
     { input: '04_Social_Media/Instagram_Portrait_Post_1080x1350.png', output: 'himalayas-portrait.webp', width: 640 },
 ]
 
@@ -36,6 +43,7 @@ const HERO_CROP = {
     extract: { left: 1000, top: 0, width: 920, height: 1080 },
     sizes: [
         { output: 'hero-jar.webp', width: 760 },
+        { output: 'hero-jar-640.webp', width: 640 },
         { output: 'hero-jar-480.webp', width: 480 },
     ],
 }
@@ -69,7 +77,7 @@ async function run() {
         }
         const info = await pipeline
             .resize({ width: image.width, withoutEnlargement: true })
-            .webp(WEBP_OPTIONS)
+            .webp(image.options ?? WEBP_OPTIONS)
             .toFile(path.join(IMAGES_DIR, image.output))
         logResult(image.output, info)
     }

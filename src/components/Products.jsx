@@ -19,6 +19,8 @@ export default function Products() {
                     <div className="sg-product__media">
                         <img
                             src="/images/himalayas-to-home.webp"
+                            srcSet="/images/himalayas-to-home-480.webp 480w, /images/himalayas-to-home.webp 760w"
+                            sizes="(max-width: 960px) min(520px, 92vw), 560px"
                             width="760"
                             height="760"
                             loading="lazy"

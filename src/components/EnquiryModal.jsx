@@ -179,7 +179,7 @@ export default function EnquiryModal() {
         >
             <div className="sg-modal__panel">
                 <div className="sg-modal__header">
-                    <img src="/images/emblem.webp" width="200" height="214" alt="" className="sg-modal__emblem" />
+                    <img src="/images/emblem.webp" width="200" height="214" alt="" loading="lazy" decoding="async" className="sg-modal__emblem" />
                     <div>
                         <h2 id="sg-enquiry-title" className="sg-modal__title">Order &amp; Enquiry</h2>
                         <p id="sg-enquiry-subtitle" className="sg-modal__subtitle">

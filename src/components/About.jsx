@@ -18,6 +18,8 @@ export default function About() {
                 <div className="sg-about__media">
                     <img
                         src="/images/jar-label.webp"
+                        srcSet="/images/jar-label-480.webp 480w, /images/jar-label.webp 720w"
+                        sizes="(max-width: 960px) min(480px, 92vw), 490px"
                         width="720"
                         height="720"
                         loading="lazy"

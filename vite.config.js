@@ -1,4 +1,5 @@
-import react from '@vitejs/plugin-react'
+import path from 'node:path'
+import preact from '@preact/preset-vite'
 import { defineConfig } from 'vite'
 import { SITE, absoluteUrl } from './src/config/site.js'
 import { FAQS, GALLERY, PACK_OPTIONS } from './src/data/content.js'
@@ -243,8 +244,53 @@ function siteSeoPlugin() {
     }
 }
 
+/** Fonts used above the fold: the hero heading (700 and its italic gold line) and the lead paragraph (400). */
+const PRELOAD_FONTS = [
+    'libre-baskerville-latin-700-normal',
+    'libre-baskerville-latin-400-italic',
+    'libre-baskerville-latin-400-normal',
+]
+
+/**
+ * Inlines the stylesheet (about 7 KB gzipped) so it no longer blocks the first paint,
+ * and preloads the hero fonts so they arrive alongside the HTML.
+ */
+function criticalAssetsPlugin() {
+    return {
+        name: 'sati-gold-critical-assets',
+        apply: 'build',
+        transformIndexHtml: {
+            order: 'post',
+            handler(html, ctx) {
+                if (!ctx.bundle) {
+                    return html
+                }
+                const assets = Object.values(ctx.bundle).filter((file) => file.type === 'asset')
+
+                let output = html
+                for (const css of assets.filter((file) => file.fileName.endsWith('.css'))) {
+                    const linkTag = new RegExp(`<link rel="stylesheet"[^>]*href="/${css.fileName}"[^>]*>`)
+                    output = output.replace(linkTag, () => `<style>${css.source}</style>`)
+                }
+
+                const tags = PRELOAD_FONTS.map((name) =>
+                    assets.find((file) => file.fileName.endsWith('.woff2') && path.basename(file.fileName).startsWith(`${name}-`)),
+                )
+                    .filter(Boolean)
+                    .map((font) => ({
+                        tag: 'link',
+                        attrs: { rel: 'preload', href: `/${font.fileName}`, as: 'font', type: 'font/woff2', crossorigin: '' },
+                        injectTo: 'head',
+                    }))
+
+                return { html: output, tags }
+            },
+        },
+    }
+}
+
 export default defineConfig({
-    plugins: [react(), siteSeoPlugin()],
+    plugins: [preact(), siteSeoPlugin(), criticalAssetsPlugin()],
     build: {
         cssCodeSplit: false,
         assetsInlineLimit: 0,

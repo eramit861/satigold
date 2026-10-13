@@ -16,9 +16,13 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => setIsScrolled(window.scrollY > 12)
-        handleScroll()
+        /* Next frame, so reading scrollY right after hydration does not force a synchronous layout. */
+        const initialFrame = requestAnimationFrame(handleScroll)
         window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
+        return () => {
+            cancelAnimationFrame(initialFrame)
+            window.removeEventListener('scroll', handleScroll)
+        }
     }, [])
 
     useEffect(() => {
@@ -43,7 +47,15 @@ export default function Header() {
         <header className={headerClasses}>
             <div className="sg-container sg-header__inner">
                 <a href="#home" className="sg-header__brand" aria-label={`${SITE.productName}, back to top`} onClick={closeMenu}>
-                    <img src="/images/logo.webp" alt={`${SITE.productName} logo`} width="220" height="159" className="sg-header__logo" />
+                    <img
+                        src="/images/logo.webp"
+                        srcSet="/images/logo-160.webp 160w, /images/logo.webp 220w"
+                        sizes="(max-width: 480px) 80px, 97px"
+                        alt={`${SITE.productName} logo`}
+                        width="220"
+                        height="159"
+                        className="sg-header__logo"
+                    />
                 </a>
 
                 <nav id="sg-primary-nav" className="sg-nav" aria-label="Primary">

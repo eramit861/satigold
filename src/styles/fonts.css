@@ -1,0 +1,170 @@
+/**
+ * Self-hosted fonts: same families and weights the site used from Google Fonts,
+ * served from our own domain so no extra connections are needed.
+ * Hindi text uses the device's built-in Devanagari font (see --sg-font-hindi in base.css):
+ * Android ships Noto Sans Devanagari, so downloading ~100 KB of font for a few lines is not worth it.
+ */
+@import "@fontsource/libre-baskerville/latin-400.css";
+@import "@fontsource/libre-baskerville/latin-400-italic.css";
+@import "@fontsource/libre-baskerville/latin-700.css";
+@import "@fontsource/montserrat/latin-500.css";
+@import "@fontsource/montserrat/latin-600.css";
+@import "@fontsource/montserrat/latin-700.css";
+
+/*
+ * Fallback faces sized to match the web fonts, so text keeps the same line breaks
+ * when the web fonts swap in and the layout does not shift.
+ * size-adjust is measured per weight/style against the site's own text; the ascent/descent
+ * overrides keep the web font's line metrics (Libre Baskerville 0.97 / 0.27 em,
+ * Montserrat 0.968 / 0.251 em) divided by that size-adjust.
+ * Montserrat 600/700 is measured on uppercase text: that is how it appears above the fold
+ * (badges, eyebrows, buttons), where a swap would count as layout shift.
+ * A face whose local() font is missing is skipped, so Android uses the "Android" family.
+ */
+@font-face {
+    font-family: "Libre Baskerville Fallback";
+    src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Liberation Serif"), local("Tinos");
+    font-weight: 400;
+    font-style: normal;
+    size-adjust: 125.8%;
+    ascent-override: 77.11%;
+    descent-override: 21.46%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback";
+    src: local("Times New Roman Bold"), local("TimesNewRomanPS-BoldMT"), local("Liberation Serif Bold"), local("Tinos Bold");
+    font-weight: 700;
+    font-style: normal;
+    size-adjust: 121.36%;
+    ascent-override: 79.93%;
+    descent-override: 22.25%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback";
+    src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"), local("Liberation Serif Italic"), local("Tinos Italic");
+    font-weight: 400;
+    font-style: italic;
+    size-adjust: 114.35%;
+    ascent-override: 84.83%;
+    descent-override: 23.61%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback";
+    src: local("Times New Roman Bold Italic"), local("TimesNewRomanPS-BoldItalicMT"), local("Liberation Serif Bold Italic"), local("Tinos Bold Italic");
+    font-weight: 700;
+    font-style: italic;
+    size-adjust: 109.45%;
+    ascent-override: 88.63%;
+    descent-override: 24.67%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback Android";
+    src: local("Noto Serif"), local("NotoSerif-Regular");
+    font-weight: 400;
+    font-style: normal;
+    size-adjust: 106.71%;
+    ascent-override: 90.9%;
+    descent-override: 25.3%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback Android";
+    src: local("Noto Serif Bold"), local("NotoSerif-Bold");
+    font-weight: 700;
+    font-style: normal;
+    size-adjust: 104.2%;
+    ascent-override: 93.09%;
+    descent-override: 25.91%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback Android";
+    src: local("Noto Serif Italic"), local("NotoSerif-Italic");
+    font-weight: 400;
+    font-style: italic;
+    size-adjust: 99.45%;
+    ascent-override: 97.54%;
+    descent-override: 27.15%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Libre Baskerville Fallback Android";
+    src: local("Noto Serif Bold Italic"), local("NotoSerif-BoldItalic");
+    font-weight: 700;
+    font-style: italic;
+    size-adjust: 88.33%;
+    ascent-override: 109.82%;
+    descent-override: 30.57%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback";
+    src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+    font-weight: 400 500;
+    size-adjust: 112.15%;
+    ascent-override: 86.31%;
+    descent-override: 22.38%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback";
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    font-weight: 600;
+    size-adjust: 105.16%;
+    ascent-override: 92.05%;
+    descent-override: 23.87%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback";
+    src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+    font-weight: 700;
+    size-adjust: 105.36%;
+    ascent-override: 91.87%;
+    descent-override: 23.82%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback Android";
+    src: local("Roboto Medium"), local("Roboto-Medium");
+    font-weight: 400 500;
+    size-adjust: 112.05%;
+    ascent-override: 86.39%;
+    descent-override: 22.4%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback Android";
+    src: local("Roboto Bold"), local("Roboto-Bold");
+    font-weight: 600;
+    size-adjust: 114.27%;
+    ascent-override: 84.71%;
+    descent-override: 21.97%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: "Montserrat Fallback Android";
+    src: local("Roboto Bold"), local("Roboto-Bold");
+    font-weight: 700;
+    size-adjust: 113.86%;
+    ascent-override: 85.02%;
+    descent-override: 22.04%;
+    line-gap-override: 0%;
+}
