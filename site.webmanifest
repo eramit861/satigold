@@ -1,0 +1,21 @@
+{
+    "name": "Sati Gold Pure Honey",
+    "short_name": "Sati Gold",
+    "description": "Buy Sati Gold Pure Honey: 99.9% pure, raw and unfiltered honey from wild Himalayan flowers in Almora, Uttarakhand. No added sugar, no preservatives. Order on WhatsApp: +91 9536221807.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FBF5E6",
+    "theme_color": "#243B21",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
