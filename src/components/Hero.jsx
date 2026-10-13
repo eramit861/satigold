@@ -8,8 +8,9 @@ import './Hero.css'
 /* Keep in sync with the hero preload <link> in index.html. */
 const HERO_IMAGE = {
     src: '/images/hero-jar.webp',
-    srcSet: '/images/hero-jar-480.webp 480w, /images/hero-jar-640.webp 640w, /images/hero-jar.webp 760w',
-    sizes: '(max-width: 900px) min(420px, 88vw), 520px',
+    srcSet: '/images/hero-jar-480.webp 480w, /images/hero-jar-500.webp 500w, /images/hero-jar-640.webp 640w, /images/hero-jar.webp 760w',
+    /* Frame width (max 500px desktop, 420px stacked) minus its 8px border on each side. */
+    sizes: '(max-width: 900px) calc(min(420px, 88vw) - 16px), 484px',
 }
 
 export default function Hero() {

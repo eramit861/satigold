@@ -49,7 +49,7 @@ export default function Header() {
                 <a href="#home" className="sg-header__brand" aria-label={`${SITE.productName}, back to top`} onClick={closeMenu}>
                     <img
                         src="/images/logo.webp"
-                        srcSet="/images/logo-160.webp 160w, /images/logo.webp 220w"
+                        srcSet="/images/logo-100.webp 100w, /images/logo-160.webp 160w, /images/logo.webp 220w"
                         sizes="(max-width: 480px) 80px, 97px"
                         alt={`${SITE.productName} logo`}
                         width="220"
