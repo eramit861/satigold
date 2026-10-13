@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { SITE, absoluteUrl } from './src/config/site.js'
-import { FAQS, PACK_OPTIONS } from './src/data/content.js'
+import { FAQS, GALLERY, PACK_OPTIONS } from './src/data/content.js'
 
 const escapeHtml = (value) =>
     String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -79,10 +79,20 @@ function buildStructuredData() {
     }
 }
 
-const buildRobots = () => `User-agent: *\nAllow: /\n\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`
+/** contact.php only accepts form POSTs, so crawlers have nothing to index there. */
+const buildRobots = () => `User-agent: *\nAllow: /\nDisallow: /contact.php\n\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`
+
+/** Product photos shown on the page, listed for Google Images. */
+const SITEMAP_IMAGES = [
+    ...new Set([SITE.ogImage, '/images/hero-jar.webp', '/images/himalayas-to-home.webp', ...GALLERY.map((image) => image.src)]),
+]
 
 function buildSitemap() {
     const lastModified = new Date().toISOString().slice(0, 10)
+    const images = SITEMAP_IMAGES.map(
+        (src) => `    <image:image>\n      <image:loc>${escapeHtml(absoluteUrl(src))}</image:loc>\n    </image:image>`,
+    ).join('\n')
+
     return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
@@ -90,9 +100,7 @@ function buildSitemap() {
     <lastmod>${lastModified}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>${absoluteUrl(SITE.ogImage)}</image:loc>
-    </image:image>
+${images}
   </url>
 </urlset>
 `
